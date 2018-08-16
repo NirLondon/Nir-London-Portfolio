@@ -1,0 +1,42 @@
+﻿@model ASP_Project.Common.Models.OwnerProduct
+
+@{
+    ViewBag.Title = Model.Product.Title;
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="panel">
+    <div class="panel-body">
+        <h2>@Model.Product.Title</h2>
+    </div>
+    <div>
+        <h5 class="panel-body">Description:</h5>
+    </div>
+    <p class="panel-body">
+        @Model.Product.LongDescription
+    </p>
+    <div class="panel-body Inline">
+        <h5>Price: @Model.Product.Price</h5>
+    </div>
+    @{
+        foreach (var item in Model.Product.Images)
+        {
+            if (item != null)
+            {
+                <img class="panel-body float-right" width="200" src="data:image/png;base64,@Convert.ToBase64String(item)" />
+            }
+        }
+        var exists = Request.Cookies["cart"]?["productsIds"].Split(',').Contains(Model.Product.Id.ToString());
+        if (!(exists != null && exists.Value))
+        {
+            <br />
+            <button onclick="AddToCart(@Model.Product.Id)">Add To Cart</button>
+        }
+    }
+    <div class="panel-body">
+        <h3>Pulisher's Details:</h3>
+        @Html.DisplayFor(m => m.Owner)
+    </div>
+
+</div>
+

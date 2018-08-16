@@ -1,0 +1,22 @@
+﻿.Inline {
+    display: inline-table
+}
+
+.ProductPreview {
+    background-color: azure;
+    text-align: center;
+    border: solid;
+    display: inline-table;
+    border-color: darkgray;
+    width: 300px;
+    border-radius: 7px
+}
+
+.SideMenu {
+    border: groove;
+    border-color: cadetblue;
+}
+
+.CartProductPreview {
+    width: 750px;
+}

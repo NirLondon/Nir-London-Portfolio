@@ -1,0 +1,29 @@
+﻿@using ASP_Project.Client.Controllers;
+@model IEnumerable<ASP_Project.Common.Models.ClientProduct>
+
+<div class="container">
+    <div class="dropdown ">
+        <button class="btn  dropdown-toggle float-left" data-toggle="dropdown">Sort By</button>
+        <ul class="dropdown-menu">
+            <li><a href="@Url.Action("Index", "Home", new { sortBy = SortBy.Date})">Date</a></li>
+            <li><a href="@Url.Action("Index", "Home", new { sortBy = SortBy.Title})">Title</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            @{
+                int i = 0;
+                foreach (var prod in Model)
+                {
+                    @Html.Partial("_ProductPreview", prod)
+
+                    if (i == 2)
+                    { <br /> <br />}
+
+                    i = ++i % 3;
+                }
+            }
+        </div>
+    </div>
+</div>
+

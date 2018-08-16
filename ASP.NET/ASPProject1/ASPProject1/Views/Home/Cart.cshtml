@@ -1,0 +1,15 @@
+﻿@model IEnumerable<ASP_Project.Common.Models.ClientProduct>
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<div>
+    <h2>Your Cart:</h2>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            @Html.Partial("_CartProductPreview", item);
+        }
+    }
+</div>

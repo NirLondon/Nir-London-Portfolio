@@ -1,0 +1,52 @@
+﻿<UserControl
+    x:Class="Backgammon.UWP.UserControlls.ChatUC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:chat="using:Backgammon.Common.ChatLogic"
+    xmlns:converters="using:Backgammon.UWP.Converters"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    >
+    <UserControl.Resources>
+        <converters:BoolToHorizontalAlignment x:Key="boolToHoAlign"/>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <ListView ItemsSource="{x:Bind conversation}"
+                  Grid.ColumnSpan="2">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="chat:Message">
+                    <StackPanel>
+                        <TextBlock Text="{Binding SenderName}"
+                                    HorizontalAlignment="{Binding IsMine, Converter={StaticResource boolToHoAlign}}"
+                        />
+                        <TextBlock Text="{Binding SendingTime}"
+                                    HorizontalAlignment="{Binding IsMine, Converter={StaticResource boolToHoAlign}}"
+                        />
+                        <TextBlock Text="{Binding Content}"
+                                    HorizontalAlignment="{Binding IsMine, Converter={StaticResource boolToHoAlign}}"
+                        />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBox Name='tbxMessageEdit' PlaceholderText="Right a message..."/>
+            <Button Content="Send" Click="SendMessage" Grid.Column="1"/>
+        </Grid>
+    </Grid>
+
+</UserControl>

@@ -1,0 +1,61 @@
+﻿@using ASP_Project.Common.Models;
+@*@using System.Web.Optimization;*@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Styles/StyleSheet1.css" rel="stylesheet" />
+    @*@Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")*@
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="~/Scripts/CartCookie.js"></script>
+    <script src="~/Scripts/CookiesManage.js"></script>
+    <script src="~/Scripts/PostFromJSCode.js"></script>
+
+</head>
+
+<body style="background-color: lightcyan;">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li> @Html.ActionLink("Your Cart", "Cart", "Home")</li>
+                <li> @Html.ActionLink("Upload a new product", "AddProduct", "Products")</li>
+                <li>@Html.ActionLink("About Us", "About", "Home")</li>
+                @if(Request.Cookies["user"]!= null)
+                {
+                    <li>@Html.ActionLink("Your Products", "YourProducts", "Home") </li>
+                }
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="@Url.Action("SigninOrEdit", new { controller = "Registry" })">
+                        <span class="glyphicon glyphicon-user"></span> @(Request.Cookies["user"] == null ? "Signin" : "Edit your profile")
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div>
+        <div class="container-fluid">
+            <div class="col-sm-3">
+                @if (ViewBag.IsSignin == null)
+                {
+                    @Html.Partial("loginBox", new LoginUser())
+                }
+            </div>
+            <div class="col-sm-9">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

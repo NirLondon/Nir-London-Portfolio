@@ -1,0 +1,119 @@
+﻿@model ASP_Project.Common.Models.UploadedProduct
+
+@{
+    ViewBag.Title = "New Product Uploading";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<script>
+    //https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_fileupload_files
+
+    function AddPicutures() {
+        var pics = document.getElementById("Images"),
+            imgs = document.getElementById("imgs"),
+            sub = document.getElementById("sub");
+        if (pics.files.length > 3) {
+            alert("You can upload 3 pictures at most.\nPlease choose less pictures.");
+            sub.disabled = true;
+        }
+        else sub.disabled = false;
+        var numOfChlds = imgs.childNodes.length;
+        for (var i = 0; i < numOfChlds; i++) {
+            imgs.removeChild(imgs.childNodes[0]);
+        }
+        for (var i = 0; i < pics.files.length; i++) {
+            var Reader = new FileReader();
+            Reader.readAsDataURL(pics.files[i]);
+
+            Reader.onload = function (args) {
+                var img = document.createElement("img");
+                img.width = 50;
+                img.src = args.target.result;
+                imgs.appendChild(img);
+            }
+        }
+    }
+</script>
+
+<div class="Inline">
+    @if (Request.Cookies["user"] != null)
+    {
+        using (Html.BeginForm("UploadProduct", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+    <fieldset>
+        <legend>Your Product Details</legend>
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Fill Your Product Details</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label " })
+                <div>
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ShortDescription, htmlAttributes: new { @class = "control-label " })
+                <div>
+                    @Html.EditorFor(model => model.ShortDescription, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ShortDescription, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.LongDescription, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.EditorFor(model => model.LongDescription, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.LongDescription, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div>@Html.LabelFor(up => up.Images)</div>
+                <div>
+                    @Html.TextBoxFor(up => up.Images,
+                                   new
+                                   {
+                                       Class = "form-control",
+                                       type = "file",
+                                       id = "Images",
+                                       multiple = true,
+                                       onchange = "AddPicutures()",
+                                       accept = "image/jpg, image/jpeg"
+                                   })
+                </div>
+            </div>
+
+            <div id="imgs"></div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Upload" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+
+    </fieldset>
+        }
+    }
+    else
+    {
+        <h1><span>You have to log in in order to upload a product.</span></h1>
+    }
+</div>
+
+
+
+
+

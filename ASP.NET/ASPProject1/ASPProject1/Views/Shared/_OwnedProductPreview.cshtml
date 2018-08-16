@@ -1,0 +1,22 @@
+﻿@model ASP_Project.Common.Models.ClientProduct
+<script src="~/Scripts/MyScripts/PostFromJSCode.js"></script>
+<div>
+    <h2>@Model.Title</h2>
+    <p>@Model.LongDescription</p>
+    <h3>Price: @Model.Price</h3>
+    <picture>
+        @foreach (var img in Model.Images)
+        {
+            if (img != null)
+            {
+                <img src="data:image/png;base64,@Convert.ToBase64String(img)" height="200" />
+            }
+        }
+    </picture>
+    <button onclick="post('/Products/RemoveProduct', { productId : @Model.Id })">Remove this product</button>
+</div>
+
+
+
+
+

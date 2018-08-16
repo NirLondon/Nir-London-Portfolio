@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="Backgammon.UWP.Pages.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:UserControlls="using:Backgammon.UWP.UserControlls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.7*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*" />
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.ColumnSpan="2">
+            <TextBlock Text="Wellcome" VerticalAlignment="Center"/>
+            <Button Content="Log out"
+                    HorizontalAlignment="Right"
+                    Click="{x:Bind LogOut}"/>
+        </Grid>
+
+        <UserControlls:GameUC x:Name="gameUc" Grid.Row="1"/>
+
+        <UserControlls:ChatUC x:Name="chatUc" Grid.Row="1" Grid.Column="1"/>
+    </Grid>
+
+</Page>

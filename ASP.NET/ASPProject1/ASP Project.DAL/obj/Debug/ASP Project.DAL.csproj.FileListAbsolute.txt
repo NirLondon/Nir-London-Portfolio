@@ -1,0 +1,14 @@
+C:\Users\ניר לונדון\Desktop\ASPProject1\ASP Project.DAL\obj\Debug\ASP Project.DAL.csprojResolveAssemblyReference.cache
+C:\Users\ניר לונדון\Desktop\ASPProject1\ASP Project.DAL\obj\Debug\ASP Project.DAL.csproj.CoreCompileInputs.cache
+C:\Users\ניר לונדון\Desktop\ASPProject1\ASP Project.DAL\bin\Debug\ASP Project.DAL.dll.config
+C:\Users\ניר לונדון\Desktop\ASPProject1\ASP Project.DAL\bin\Debug\ASP Project.DAL.dll
+C:\Users\ניר לונדון\Desktop\ASPProject1\ASP Project.DAL\bin\Debug\ASP Project.DAL.pdb
+C:\Users\ניר לונדון\Desktop\ASPProject1\ASP Project.DAL\bin\Debug\ASP Project.Common.dll
+C:\Users\ניר לונדון\Desktop\ASPProject1\ASP Project.DAL\bin\Debug\EntityFramework.dll
+C:\Users\ניר לונדון\Desktop\ASPProject1\ASP Project.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ניר לונדון\Desktop\ASPProject1\ASP Project.DAL\bin\Debug\ASP Project.Common.pdb
+C:\Users\ניר לונדון\Desktop\ASPProject1\ASP Project.DAL\bin\Debug\ASP Project.Common.dll.config
+C:\Users\ניר לונדון\Desktop\ASPProject1\ASP Project.DAL\bin\Debug\EntityFramework.xml
+C:\Users\ניר לונדון\Desktop\ASPProject1\ASP Project.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ניר לונדון\Desktop\ASPProject1\ASP Project.DAL\obj\Debug\ASP Project.DAL.dll
+C:\Users\ניר לונדון\Desktop\ASPProject1\ASP Project.DAL\obj\Debug\ASP Project.DAL.pdb

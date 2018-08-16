@@ -1,0 +1,7 @@
+﻿@model IEnumerable<ASP_Project.Common.Models.ClientProduct>
+
+@{
+    ViewBag.Title = "ASP Project";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+@Html.Partial("ShowProducts", Model)

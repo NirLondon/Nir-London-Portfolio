@@ -1,0 +1,22 @@
+﻿@model ASP_Project.Common.Models.ClientProduct
+
+@{
+    bool? isInCart = Request.Cookies["cart"]?["productsIds"]?
+        .Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+        .Contains(Model.Id.ToString());
+}
+<div class="ProductPreview">
+    <div> @Model.Title</div>
+    <div>@Model.UploadingDate.ToShortDateString()</div>
+    <div>@Model.ShortDescription</div>
+    <div>@Model.Price</div>
+    @if (Model.Images[0] != null)
+    {
+        <div>
+            <img height="120" id="img" src="data:image/png;base64,@Convert.ToBase64String(Model.Images[0])" />
+        </div>
+    }
+    <div>@Html.ActionLink("For More Dellais", "_ProductDetails", new { Controller = "Products", productId = Model.Id })</div>
+    <input class="btn" name="btn@(Model.Id)" type="button" value="@(isInCart.HasValue && isInCart.Value ? "Remove From Cart" : "Add To Cart")" onclick="@(isInCart.HasValue && isInCart.Value ? "RemoveFromCart(" + Model.Id + ")" : "AddToCart(" + Model.Id + ")")" />
+</div>
+

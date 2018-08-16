@@ -1,0 +1,21 @@
+﻿@model ASP_Project.Common.Models.ClientProduct
+
+<div class="CartProductPreview panel panel-default">
+    <h3 class="panel-body">@Model.Title</h3>
+    <p class="panel-body">@Model.ShortDescription</p>
+    <div class="panel-body Inline">Price: @Model.Price </div>
+
+    @foreach (var image in Model.Images)
+    {
+        if (image != null)
+        {
+            <img class="panel-body float-md-right " height="120" src="data:image/png;base64,@Convert.ToBase64String(image)" />
+        }
+    }
+
+    <footer class="panel-body">
+        <button onclick="RemoveFromCart(@Model.Id)">Remove From Cart</button>
+        <button onclick="post('/Products/Buy', { productId : @Model.Id })">Buy</button>
+        <div>@Html.ActionLink("For More Dellais", "_ProductDetails", new { Controller = "Products", productId = Model.Id })</div>
+    </footer>
+</div>

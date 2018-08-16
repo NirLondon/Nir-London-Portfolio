@@ -1,0 +1,13 @@
+﻿@model ASP_Project.Common.Models.SigninUser
+
+@{
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+@Html.DisplayForModel()
+@using (Html.BeginForm("RegistryConfirm", "Registry", Model))
+{
+    <input type="submit" value="register" />
+}
+
+
